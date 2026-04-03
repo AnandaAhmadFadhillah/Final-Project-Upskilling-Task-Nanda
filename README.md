@@ -1,178 +1,158 @@
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)	![Google Colab](https://img.shields.io/badge/Google%20Colab-%23F9A825.svg?style=for-the-badge&logo=googlecolab&logoColor=white) ![image](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
 
 
-# 🧠 Fetal Health Classification using Machine Learning
+# 🧠 Prediksi Kondisi Kesehatan Janin Menggunakan Random Forest
 
-## 📌 Overview
+## 📌 Deskripsi Proyek
 
-Proyek ini bertujuan untuk mengklasifikasikan kondisi kesehatan janin (*fetal health*) menjadi tiga kategori:
+Proyek ini merupakan implementasi *machine learning* untuk memprediksi kondisi kesehatan janin berdasarkan data *Cardiotocography (CTG)*. Model yang digunakan adalah **Random Forest Classifier**, yang dipilih karena kemampuannya dalam menangani data kompleks serta menghasilkan performa klasifikasi yang stabil.
 
-* **Normal (1)**
-* **Suspect (2)**
-* **Pathological (3)**
-
-Model machine learning dikembangkan untuk membantu proses analisis data medis berbasis fitur kardiotokografi (CTG), sehingga dapat mendukung pengambilan keputusan yang lebih akurat.
+Aplikasi ini dikembangkan menggunakan **Streamlit** sehingga dapat digunakan secara interaktif melalui web interface.
 
 ---
 
-## 🎯 Objectives
+## 🎯 Tujuan
 
-* Membangun model klasifikasi multi-class
-* Membandingkan performa beberapa algoritma machine learning
-* Mengatasi permasalahan *class imbalance*
-* Mengevaluasi model menggunakan metrik yang relevan (precision, recall, F1-score)
+* Mengklasifikasikan kondisi kesehatan janin ke dalam 3 kategori:
+
+  * **Normal**
+  * **Suspect**
+  * **Pathological**
+* Membantu memberikan *decision support* awal dalam analisis kesehatan janin
 
 ---
 
 ## 📊 Dataset
 
-Dataset yang digunakan adalah **Fetal Health Dataset**, yang berisi berbagai fitur numerik hasil pengukuran CTG.
+Dataset yang digunakan adalah data *Fetal Health* yang terdiri dari:
 
-### 🔹 Target Variable
+* 21 fitur numerik hasil pengukuran CTG
+* Label target berupa kondisi kesehatan janin
 
-* `fetal_health`
+Contoh fitur:
 
-  * 1 = Normal
-  * 2 = Suspect
-  * 3 = Pathological
+* Baseline value
+* Accelerations
+* Fetal movement
+* Uterine contractions
+* Decelerations (light, severe, prolonged)
 
 ---
 
-## ⚙️ Methodology (CRISP-DM)
+## ⚙️ Metodologi
 
-### 1. Business Understanding
+### 1. Preprocessing
 
-Menentukan tujuan klasifikasi kondisi kesehatan janin.
+* Data cleaning
+* Handling missing values (jika ada)
+* Penanganan *imbalanced data* menggunakan **SMOTE**
 
-### 2. Data Understanding
+### 2. Model yang Digunakan
 
-* Analisis distribusi data
-* Deteksi *class imbalance*
-* Visualisasi menggunakan:
+Model utama:
 
-  * Countplot
-  * Heatmap korelasi
+* 🌳 **Random Forest Classifier**
 
-### 3. Data Preparation
+Alasan pemilihan:
 
-* Train-test split (stratified)
-* Penanganan *class imbalance* menggunakan **SMOTE**
+* Mampu menangani non-linear relationship
+* Robust terhadap overfitting
+* Memberikan *feature importance* untuk interpretasi
 
-### 4. Modeling
+---
 
-Model yang digunakan:
+## 📈 Evaluasi Model
 
-* 🌲 Random Forest
-* 📈 Logistic Regression
-* 📊 Naive Bayes
-* 🔗 Ensemble (Voting Classifier)
+Model dievaluasi menggunakan:
 
-### 5. Evaluation
-
-Evaluasi model menggunakan:
-
+* Accuracy
+* Precision
+* Recall
+* F1-Score
 * Confusion Matrix
-* Classification Report:
 
-  * Precision
-  * Recall
-  * F1-score
+Random Forest dipilih sebagai model terbaik berdasarkan performa evaluasi dibandingkan:
 
----
-
-## 📈 Results & Analysis
-
-* Dataset menunjukkan kondisi **imbalanced**, di mana kelas *Normal* mendominasi.
-* Setelah penerapan **SMOTE**, distribusi data menjadi lebih seimbang.
-* Model **Random Forest** memberikan performa terbaik dibandingkan model lainnya.
-* Ensemble tidak selalu meningkatkan performa, tergantung pada kombinasi model.
+* Logistic Regression
+* Naive Bayes
+* Ensemble Model
 
 ---
 
-## 🧪 Key Insights
+## 🚀 Deployment
 
-* Akurasi bukan satu-satunya metrik yang penting, terutama pada dataset medis.
-* Recall pada kelas minoritas (Suspect & Pathological) menjadi fokus utama.
-* SMOTE membantu meningkatkan kemampuan model dalam mengenali kelas minoritas.
+Aplikasi di-deploy menggunakan:
 
----
-
-## 🏆 Best Model
-
-**Random Forest** dipilih sebagai model terbaik karena:
-
-* Performa stabil di semua kelas
-* Nilai F1-score tinggi
-* Mampu menangani data non-linear dengan baik
+* **Streamlit** (frontend & backend)
+* Dapat dijalankan secara lokal atau melalui tunneling (LocalTunnel / Ngrok)
 
 ---
 
-## 📌 Feature Importance
+## 💻 Cara Menjalankan Aplikasi
 
-Analisis menunjukkan bahwa beberapa fitur memiliki kontribusi signifikan terhadap klasifikasi kondisi janin, yang dapat digunakan sebagai indikator penting dalam analisis medis.
-
----
-
-## 🚀 Tech Stack
-
-* Python
-* Pandas, NumPy
-* Scikit-learn
-* Imbalanced-learn (SMOTE)
-* Matplotlib, Seaborn
-
----
-
-## 📂 Project Structure
-
-```
-├── fetal_health.csv
-├── notebook.ipynb
-├── README.md
-```
-
----
-
-## ▶️ How to Run
-
-1. Clone repository:
-
-```bash
-git clone https://github.com/username/fetal-health-classification.git
-```
-
-2. Install dependencies:
+### 1. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Run notebook:
+### 2. Jalankan aplikasi
 
 ```bash
-jupyter notebook
+python -m streamlit run app.py
+```
+
+### 3. Akses di browser
+
+```
+http://localhost:8501
 ```
 
 ---
 
-## 📚 Conclusion
+## 🖥️ Tampilan Aplikasi
 
-Pendekatan machine learning dengan penanganan *class imbalance* terbukti mampu meningkatkan kualitas klasifikasi pada dataset medis. Model Random Forest memberikan performa terbaik dan dapat dijadikan baseline untuk pengembangan lebih lanjut.
+Aplikasi menyediakan:
 
----
+* Input 21 fitur numerik
+* Tombol prediksi
+* Output berupa:
 
-## ✨ Future Work
-
-* Hyperparameter tuning
-* Cross-validation
-* Deployment (API / Web App)
-* Explainable AI (SHAP / LIME)
+  * Label kondisi kesehatan janin
+  * Kelas prediksi
 
 ---
 
-## 👤 Author
+## 🧠 Insight Model
 
-**Ananda Ahmad Fadhillah**
-Information Systems Student – Telkom University
+Random Forest memungkinkan analisis terhadap fitur yang paling berpengaruh dalam menentukan kondisi janin, sehingga tidak hanya memberikan prediksi, tetapi juga mendukung interpretasi medis secara awal.
 
 ---
+
+## ⚠️ Keterbatasan
+
+* Dataset tidak berasal dari data klinis real-time
+* Model belum diuji pada lingkungan medis sebenarnya
+* Interpretasi masih bersifat *decision support*, bukan diagnosis final
+
+---
+
+## 🔮 Pengembangan Selanjutnya
+
+* Integrasi dengan sistem rumah sakit
+* Penambahan data real-time
+* Eksperimen dengan model lain (XGBoost, Deep Learning)
+* Visualisasi feature importance di aplikasi
+
+---
+
+## 👨‍💻 Author
+
+Ananda Ahmad Fadhillah
+S1 Sistem Informasi – Telkom University
+
+---
+
+## 📌 Catatan
+
+Aplikasi ini dibuat untuk tujuan akademik dan penelitian, bukan sebagai pengganti diagnosis medis profesional.
