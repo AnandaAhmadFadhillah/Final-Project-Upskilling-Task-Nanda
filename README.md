@@ -137,15 +137,6 @@ Random Forest memungkinkan analisis terhadap fitur yang paling berpengaruh dalam
 
 ---
 
-## 🔮 Pengembangan Selanjutnya
-
-* Integrasi dengan sistem rumah sakit
-* Penambahan data real-time
-* Eksperimen dengan model lain (XGBoost, Deep Learning)
-* Visualisasi feature importance di aplikasi
-
----
-
 ## 👨‍💻 Author
 
 Ananda Ahmad Fadhillah
@@ -155,4 +146,4 @@ S1 Sistem Informasi – Telkom University
 
 ## 📌 Catatan
 
-Aplikasi ini dibuat untuk tujuan akademik dan penelitian, bukan sebagai pengganti diagnosis medis profesional.
+Aplikasi ini dibuat untuk tujuan akademik, bukan sebagai pengganti diagnosis medis profesional.
